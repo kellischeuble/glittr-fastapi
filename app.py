@@ -9,7 +9,7 @@ def setup_db():
     db_file = os.path.join(
         os.path.dirname(__file__),
         'db',
-        'glittr.sqlite')
+        'glittr.db')
 
     db_session.global_init(db_file)
 

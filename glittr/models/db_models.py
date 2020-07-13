@@ -47,7 +47,7 @@ class Parent(SqlAlchemyBase):
     __tablename__ = 'parents'
 
     parent_id = sa.Column(sa.Integer, primary_key=True)
-    artist_id = sa.Column(sa.Integer, sa.ForeignKey("artist.artist_id"), nullable=False)
+    artist_id = sa.Column(sa.Integer, sa.ForeignKey("artists.artist_id"), nullable=False)
     inserted_dt = sa.Column(sa.DateTime, nullable=False, default=datetime.utcnow)
     updated_dt = sa.Column(sa.DateTime, nullable=False, default=datetime.utcnow)
     children = relationship("Child")
@@ -60,8 +60,8 @@ class Child(SqlAlchemyBase):
     __tablename__ = 'children'
 
     child_id = sa.Column(sa.Integer, primary_key=True)
-    artist_id = sa.Column(sa.Integer, sa.ForeignKey("artist.artist_id"), nullable=False)
-    parent_id = sa.Column(sa.Integer, sa.ForeignKey("parent.parent_id"), nullable=False)
+    artist_id = sa.Column(sa.Integer, sa.ForeignKey("artists.artist_id"), nullable=False)
+    parent_id = sa.Column(sa.Integer, sa.ForeignKey("parents.parent_id"), nullable=False)
     date_of_birth = sa.Column(sa.DateTime, nullable=False)
     inserted_dt = sa.Column(sa.DateTime, nullable=False, default=datetime.utcnow)
     updated_dt = sa.Column(sa.DateTime, nullable=False, default=datetime.utcnow)
@@ -72,7 +72,7 @@ class Instructor(SqlAlchemyBase):
     __tablename__ = 'instructors'
 
     instructor_id = sa.Column(sa.Integer, primary_key=True)
-    artist_id = sa.Column(sa.Integer, sa.ForeignKey("artist.artist_id"), nullable=False)
+    artist_id = sa.Column(sa.Integer, sa.ForeignKey("artists.artist_id"), nullable=False)
     inserted_dt = sa.Column(sa.DateTime, nullable=False, default=datetime.utcnow)
     updated_dt = sa.Column(sa.DateTime, nullable=False, default=datetime.utcnow)
     def __repr__(self):
